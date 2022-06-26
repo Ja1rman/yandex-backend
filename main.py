@@ -1,17 +1,17 @@
 from flask import Flask, Response, request, jsonify
 import db
-from schema import items_table, relations_table, Type
-import sys
-from sqlalchemy import delete, select, insert, update
 import json
 import traceback
 import re
-
+import sys
 
 migrate = len(sys.argv) == 2 and sys.argv[1] == "migrate"
 if migrate:
     db.migrate()
 
+from schema import items_table, relations_table, Type
+from sqlalchemy import delete, select, insert, update
+    
 app = Flask(__name__)
 
 
@@ -149,4 +149,4 @@ def nodes_rec(root):
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)
