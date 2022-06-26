@@ -1,0 +1,25 @@
+version: '3'
+services:
+#  backend:
+#    container_name: backend
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - 5000:80
+#    depends_on:
+#      - postgres
+  postgres:
+    container_name: postgres
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=user
+      - POSTGRES_DB=yandex
+      - POSTGRES_USER=user
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data: {}
